@@ -6,48 +6,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Happy Birthday Mumitu 💗</title>
   <link rel="stylesheet" href="style.css">
+
   <style>
-    .birthday-box {
-      text-align: center;
-      padding: 24px 12px;
-      margin: 20px auto;
-      border-radius: 20px;
-      background: #fff0f6;
-    }
-    #countdown {
-      font-size: clamp(18px, 4vw, 25px);
-      color: #d63384;
-      line-height: 1.8;
-    }
-    .surprise-button, .music-button {
+    .surprise-button {
       display: inline-block;
-      padding: 13px 22px;
-      margin: 10px 5px;
+      padding: 14px 26px;
+      margin: 15px 5px;
       border: none;
       border-radius: 30px;
       background: #d63384;
       color: white;
       text-decoration: none;
-      font-size: 16px;
+      font-size: 17px;
       cursor: pointer;
+      box-shadow: 0 5px 15px #d6338440;
     }
+
     #birthdaySurprise {
       display: none;
       padding: 20px;
+      margin-top: 20px;
       text-align: center;
       border-radius: 20px;
       background: #ffe4ef;
       color: #8d2454;
       animation: appear 1s ease;
     }
+
     .floating-heart {
       font-size: 28px;
       animation: heartbeat 1.2s infinite;
     }
+
+    #musicStatus {
+      font-size: 14px;
+      color: #d63384;
+    }
+
     @keyframes appear {
       from { opacity: 0; transform: translateY(15px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
     @keyframes heartbeat {
       50% { transform: scale(1.2); }
     }
@@ -74,30 +74,60 @@
     <section class="card">
       <div class="big-heart">💗</div>
       <div class="eyebrow">A little surprise just for you</div>
-      <h1>Happy Birthday,<br>Mumitu!</h1>
-      <p>To my favourite person, my soft place to land, and the smile I want to see for all my days.</p>
 
-      <div class="birthday-box">
-        <div class="floating-heart">💖</div>
-        <h2>Countdown to Mumitu's Birthday 🎂</h2>
-        <p id="countdown">Calculating your special moment... 💗</p>
+      <h1>Happy Birthday,<br>Mumitu!</h1>
+
+      <p>
+        To my favourite person, my soft place to land,
+        and the smile I want to see for all my days.
+      </p>
+
+      <div style="text-align:center; padding:15px;">
+        <button class="surprise-button" id="startSurprise" type="button">
+          💌 Your Surprise 💗
+        </button>
+
+        <p id="musicStatus">
+          A little surprise is waiting just for you ❤️
+        </p>
+
+        <audio
+          id="song"
+          src="Ed_Sheeran_-_Perfect(256k).mp3"
+          loop
+          preload="auto">
+        </audio>
       </div>
 
       <div id="birthdaySurprise">
         <div class="floating-heart">💗</div>
-        <h2>Happy Birthday, My Mumitu! 🎂</h2>
-        <p>আমার মায়াবতী, শুভ জন্মদিন! ❤️</p>
-        <p>তোমার হাসি আমার জীবনের সবচেয়ে সুন্দর অনুভূতি। আমি চাই, জীবনের প্রতিটি জন্মদিনে তোমার পাশে থাকতে, তোমার আনন্দের কারণ হতে, আর তোমার হাতটা সারাজীবন ধরে রাখতে।</p>
-        <p>আজ তোমার জন্য আমার ছোট্ট ভালোবাসার surprise অপেক্ষা করছে। এক এক করে খুলে দেখো, আমার সবটুকু ভালোবাসা শুধু তোমার জন্য। 💌</p>
-        <a class="surprise-button" href="letter.html">Open Your Surprise 💌</a>
-      </div>
 
-      <div style="text-align:center; padding:15px;">
-        <button class="music-button" id="playSong" type="button">
-          🎶 Play Our Song ❤️
-        </button>
-        <p id="musicStatus">Tap the button to play your song 💗</p>
-        <audio id="song" src="music.mp3" loop preload="none"></audio>
+        <h2>Happy Birthday, My Mumitu! 🎂</h2>
+
+        <p>আমার মায়াবতী, শুভ জন্মদিন! ❤️</p>
+
+        <p>
+          তোমার হাসি আমার জীবনের সবচেয়ে সুন্দর অনুভূতি।
+          আমি চাই, জীবনের প্রতিটি জন্মদিনে তোমার পাশে থাকতে,
+          তোমার আনন্দের কারণ হতে, আর তোমার হাতটা সারাজীবন ধরে রাখতে।
+        </p>
+
+        <p>
+          আজ তোমার জন্য আমার ছোট্ট ভালোবাসার surprise অপেক্ষা করছে।
+          এক এক করে খুলে দেখো, আমার সবটুকু ভালোবাসা শুধু তোমার জন্য। 💌
+        </p>
+
+        <a class="surprise-button" href="letter.html">
+          Open Your Love Letter 💌
+        </a>
+
+        <a class="surprise-button" href="memories.html">
+          Our Memories 📸
+        </a>
+
+        <a class="surprise-button" href="forever.html">
+          Our Forever 💍
+        </a>
       </div>
 
       <p>Made with love, from Arif 💗</p>
@@ -105,59 +135,31 @@
   </main>
 
   <footer>
-    Forever a little more in love with you. © <span id="year"></span>
+    Forever a little more in love with you. ©
+    <span id="year"></span>
   </footer>
 
   <script>
     document.getElementById("year").textContent =
       new Date().getFullYear();
 
-    // Birthday time: Bangladesh time (UTC+6)
-    const birthday = new Date("2026-10-19T00:00:00+06:00");
+    const startButton = document.getElementById("startSurprise");
+    const surprise = document.getElementById("birthdaySurprise");
+    const song = document.getElementById("song");
+    const status = document.getElementById("musicStatus");
 
-    function updateCountdown() {
-      const now = new Date();
-      const diff = birthday.getTime() - now.getTime();
-      const countdown = document.getElementById("countdown");
-      const surprise = document.getElementById("birthdaySurprise");
+    startButton.addEventListener("click", async () => {
+      surprise.style.display = "block";
+      startButton.style.display = "none";
 
-      if (diff <= 0) {
-        countdown.textContent = "It's your special day! 🎂💗";
-        surprise.style.display = "block";
-        return;
-      }
-
-      const days = Math.floor(diff / 86400000);
-      const hours = Math.floor(diff / 3600000) % 24;
-      const minutes = Math.floor(diff / 60000) % 60;
-      const seconds = Math.floor(diff / 1000) % 60;
-
-      countdown.textContent =
-        `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds 💗`;
-    }
-
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-
-    document.getElementById("playSong").addEventListener("click", async () => {
-      const song = document.getElementById("song");
-      const status = document.getElementById("musicStatus");
-      const button = document.getElementById("playSong");
-
-      if (!song.paused) {
-        song.pause();
-        button.textContent = "🎶 Play Our Song ❤️";
-        status.textContent = "Song paused 💗";
-        return;
-      }
+      status.textContent = "Opening your surprise... 💗";
 
       try {
         await song.play();
-        button.textContent = "⏸ Pause Our Song";
-        status.textContent = "Playing our song with love 💕";
+        status.textContent = "Our song is playing for you, Mumitu ❤️🎶";
       } catch (error) {
         status.textContent =
-          "Upload music.mp3 to your GitHub repository to play the song.";
+          "Your surprise is open 💗 If the song doesn't play, check the music file.";
       }
     });
   </script>
