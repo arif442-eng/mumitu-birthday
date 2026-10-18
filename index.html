@@ -2,85 +2,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Happy Birthday Mumitu 💗</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Happy Birthday Mumitu 💗</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .birthday-box {
+      text-align: center;
+      padding: 24px 12px;
+      margin: 20px auto;
+      border-radius: 20px;
+      background: #fff0f6;
+    }
+    #countdown {
+      font-size: clamp(18px, 4vw, 25px);
+      color: #d63384;
+      line-height: 1.8;
+    }
+    .surprise-button, .music-button {
+      display: inline-block;
+      padding: 13px 22px;
+      margin: 10px 5px;
+      border: none;
+      border-radius: 30px;
+      background: #d63384;
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #birthdaySurprise {
+      display: none;
+      padding: 20px;
+      text-align: center;
+      border-radius: 20px;
+      background: #ffe4ef;
+      color: #8d2454;
+      animation: appear 1s ease;
+    }
+    .floating-heart {
+      font-size: 28px;
+      animation: heartbeat 1.2s infinite;
+    }
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes heartbeat {
+      50% { transform: scale(1.2); }
+    }
+  </style>
 </head>
+
 <body>
-<div class="hearts">
-<span>♥</span><span>♡</span><span>♥</span>
-</div>
+  <div class="hearts">
+    <span>♥</span><span>♡</span><span>♥</span>
+    <span>♡</span><span>♥</span>
+  </div>
 
-<header>
-<div class="brand">A little world made for Mumitu 💗</div>
-<nav>
-<a class="active" href="index.html">Welcome</a>
-<a href="letter.html">Love Letter</a>
-<a href="memories.html">Memories</a>
-<a href="forever.html">Forever</a>
-</nav>
-</header>
+  <header>
+    <div class="brand">A little world made for Mumitu 💗</div>
+    <nav>
+      <a class="active" href="index.html">Welcome</a>
+      <a href="letter.html">Love Letter</a>
+      <a href="memories.html">Memories</a>
+      <a href="forever.html">Forever</a>
+    </nav>
+  </header>
 
-<main>
-<section class="card">
-<div class="big-heart">💗</div>
-<div class="eyebrow">A little surprise just for you</div>
-<h1>Happy Birthday,<br>Mumitu!</h1>
-<p>To my favourite person, my soft place to land, and the smile I want to see for all my days.</p>
+  <main>
+    <section class="card">
+      <div class="big-heart">💗</div>
+      <div class="eyebrow">A little surprise just for you</div>
+      <h1>Happy Birthday,<br>Mumitu!</h1>
+      <p>To my favourite person, my soft place to land, and the smile I want to see for all my days.</p>
 
-<div style="text-align:center;padding:20px;">
-<h2>Countdown to Mumitu's Birthday 🎂</h2>
-<p id="countdown" style="font-size:20px;color:#d63384;"></p>
-</div>
+      <div class="birthday-box">
+        <div class="floating-heart">💖</div>
+        <h2>Countdown to Mumitu's Birthday 🎂</h2>
+        <p id="countdown">Calculating your special moment... 💗</p>
+      </div>
 
-<button id="playSong" type="button">🎶 Play Our Song ❤️</button>
-<p id="musicStatus">Tap the button to play your song.</p>
-<audio id="song" src="music.mp3" loop></audio>
+      <div id="birthdaySurprise">
+        <div class="floating-heart">💗</div>
+        <h2>Happy Birthday, My Mumitu! 🎂</h2>
+        <p>আমার মায়াবতী, শুভ জন্মদিন! ❤️</p>
+        <p>তোমার হাসি আমার জীবনের সবচেয়ে সুন্দর অনুভূতি। আমি চাই, জীবনের প্রতিটি জন্মদিনে তোমার পাশে থাকতে, তোমার আনন্দের কারণ হতে, আর তোমার হাতটা সারাজীবন ধরে রাখতে।</p>
+        <p>আজ তোমার জন্য আমার ছোট্ট ভালোবাসার surprise অপেক্ষা করছে। এক এক করে খুলে দেখো, আমার সবটুকু ভালোবাসা শুধু তোমার জন্য। 💌</p>
+        <a class="surprise-button" href="letter.html">Open Your Surprise 💌</a>
+      </div>
 
-<p>Made with love, from Arif ❤️</p>
-</section>
-</main>
+      <div style="text-align:center; padding:15px;">
+        <button class="music-button" id="playSong" type="button">
+          🎶 Play Our Song ❤️
+        </button>
+        <p id="musicStatus">Tap the button to play your song 💗</p>
+        <audio id="song" src="music.mp3" loop preload="none"></audio>
+      </div>
 
-<footer>Forever a little more in love with you. © <span id="year"></span></footer>
+      <p>Made with love, from Arif 💗</p>
+    </section>
+  </main>
 
-<script>
-document.getElementById("year").textContent = new Date().getFullYear();
+  <footer>
+    Forever a little more in love with you. © <span id="year"></span>
+  </footer>
 
-const birthday = new Date("2026-10-19T00:00:00+06:00");
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
 
-function updateCountdown() {
-  const el = document.getElementById("countdown");
-  const diff = birthday.getTime() - Date.now();
+    // Birthday time: Bangladesh time (UTC+6)
+    const birthday = new Date("2026-10-19T00:00:00+06:00");
 
-  if (diff <= 0) {
-    el.textContent = "Happy Birthday, Mumitu! 🎂💗";
-    return;
-  }
+    function updateCountdown() {
+      const now = new Date();
+      const diff = birthday.getTime() - now.getTime();
+      const countdown = document.getElementById("countdown");
+      const surprise = document.getElementById("birthdaySurprise");
 
-  const d = Math.floor(diff / 86400000);
-  const h = Math.floor(diff / 3600000) % 24;
-  const m = Math.floor(diff / 60000) % 60;
-  const s = Math.floor(diff / 1000) % 60;
+      if (diff <= 0) {
+        countdown.textContent = "It's your special day! 🎂💗";
+        surprise.style.display = "block";
+        return;
+      }
 
-  el.textContent = `${d} days ${h} hours ${m} minutes ${s} seconds 💗`;
-}
+      const days = Math.floor(diff / 86400000);
+      const hours = Math.floor(diff / 3600000) % 24;
+      const minutes = Math.floor(diff / 60000) % 60;
+      const seconds = Math.floor(diff / 1000) % 60;
 
-updateCountdown();
-setInterval(updateCountdown, 1000);
+      countdown.textContent =
+        `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds 💗`;
+    }
 
-document.getElementById("playSong").addEventListener("click", async () => {
-  const song = document.getElementById("song");
-  const status = document.getElementById("musicStatus");
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
 
-  try {
-    await song.play();
-    document.getElementById("playSong").textContent = "🎶 Song Playing ❤️";
-    status.textContent = "Enjoy our song 💗";
-  } catch (error) {
-    status.textContent = "Please upload music.mp3 to your GitHub repository first.";
-  }
-});
-</script>
+    document.getElementById("playSong").addEventListener("click", async () => {
+      const song = document.getElementById("song");
+      const status = document.getElementById("musicStatus");
+      const button = document.getElementById("playSong");
+
+      if (!song.paused) {
+        song.pause();
+        button.textContent = "🎶 Play Our Song ❤️";
+        status.textContent = "Song paused 💗";
+        return;
+      }
+
+      try {
+        await song.play();
+        button.textContent = "⏸ Pause Our Song";
+        status.textContent = "Playing our song with love 💕";
+      } catch (error) {
+        status.textContent =
+          "Upload music.mp3 to your GitHub repository to play the song.";
+      }
+    });
+  </script>
 </body>
 </html>
